@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knight's Tour - Jeu en ligne</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h1>Knight's Tour</h1>
+            <button id="theme-toggle" title="Changer de thème" style="padding: 0.5rem 1rem;">🌙/☀️</button>
+        </div>
+        <div id="rules" style="margin-bottom: 1.5rem; background: #f8f8f8; border-radius: 8px; padding: 1rem; border: 1px solid #ddd;">
+            <strong>Règles du jeu :</strong><br>
+            Le but est de déplacer le cavalier sur toutes les cases de l'échiquier sans jamais passer deux fois sur la même case.<br>
+            À chaque tour, seules les cases accessibles par un vrai mouvement de cavalier sont surlignées. Bonne chance !<br>
+            <a href="https://fr.wikipedia.org/wiki/Tour_du_cavalier" target="_blank" rel="noopener" style="display:inline-block;margin-top:0.5rem;">En savoir plus sur le Knight's Tour (Wikipedia)</a>
+        </div>
+        <div id="game-setup" class="section">
+            <label for="board-size">Taille de l'échiquier :</label>
+            <select id="board-size">
+                {% for n in range(4, 9) %}
+                    <option value="{{ n }}">{{ n }} x {{ n }}</option>
+                {% endfor %}
+            </select>
+            <button id="create-game">Nouvelle partie</button>
+        </div>
+        <div id="game-board" style="display: none;">
+            <div class="board" id="board-container">
+                {% for i in range(8) %}
+                    {% for j in range(8) %}
+                        <div class="cell" data-row="{{ i }}" data-col="{{ j }}"></div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+            <button id="undo-move" style="margin: 1rem auto; display: block;">Annuler</button>
+            <div id="game-info">
+                <p>Statut: <span id="game-status">En attente...</span></p>
+                <p>Chronomètre: <span id="timer">00:00</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='game.js') }}"></script>
+</body>
+</html> 
