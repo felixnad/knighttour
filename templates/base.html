@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Knight's Tour{% endblock %}</title>
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6687019622412057" crossorigin="anonymous"></script>
+    
+    <!-- Socket.IO -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/knight-logo.svg') }}">
+    <link rel="mask-icon" href="{{ url_for('static', filename='images/knight-logo.svg') }}" color="#2c3e50">
+    
+    <!-- SEO Meta Tags -->
+    {% block meta %}{% endblock %}
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    {% block extra_css %}{% endblock %}
+    
+    <!-- Cookie Consent -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
+</head>
+<body>
+    <!-- Cookie Consent Banner -->
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+    <script>
+    window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+        "palette": {
+            "popup": {
+                "background": "#2c3e50",
+                "text": "#ffffff"
+            },
+            "button": {
+                "background": "#ffffff",
+                "text": "#2c3e50"
+            }
+        },
+        "theme": "classic",
+        "position": "bottom",
+        "content": {
+            "message": "Ce site utilise des cookies pour améliorer votre expérience et afficher des publicités pertinentes. En continuant à naviguer, vous acceptez leur utilisation.",
+            "dismiss": "J'accepte",
+            "link": "En savoir plus",
+            "href": "/about#cookies"
+        }
+    })});
+    </script>
+
+    <div class="page-wrapper">
+        <!-- Zone publicitaire gauche -->
+        <aside class="ad-container-left">
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:160px;height:600px"
+                 data-ad-client="ca-pub-6687019622412057"
+                 data-ad-slot="LEFT_SKYSCRAPER"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </aside>
+
+        <!-- Contenu principal -->
+        <div class="main-container">
+            <nav class="main-nav">
+                <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">Accueil</a>
+                <a href="/about" class="nav-link {% if request.path == '/about' %}active{% endif %}">À propos</a>
+                <a href="/faq" class="nav-link {% if request.path == '/faq' %}active{% endif %}">FAQ</a>
+            </nav>
+
+            {% block content %}{% endblock %}
+
+            <footer style="margin-top: 2rem; text-align: center; padding: 1rem; border-top: 1px solid #ddd;">
+                <nav style="margin-bottom: 1rem;">
+                    <a href="/about" style="color: #2c3e50; text-decoration: none; font-weight: 500; margin: 0 1rem;">À propos</a>
+                    <a href="/faq" style="color: #2c3e50; text-decoration: none; font-weight: 500; margin: 0 1rem;">FAQ</a>
+                </nav>
+                <p style="color: #666; font-size: 0.9rem;">© 2024 Knight's Tour - Le jeu du cavalier en ligne gratuit</p>
+            </footer>
+        </div>
+
+        <!-- Zone publicitaire droite -->
+        <aside class="ad-container-right">
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:160px;height:600px"
+                 data-ad-client="ca-pub-6687019622412057"
+                 data-ad-slot="RIGHT_SKYSCRAPER"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </aside>
+    </div>
+
+    {% block scripts %}
+    {% endblock %}
+</body>
+</html> 

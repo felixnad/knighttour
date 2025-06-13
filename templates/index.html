@@ -1,147 +1,117 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knight's Tour - Jeu du Cavalier en Ligne | Free Chess Knight Game</title>
-    
-    <!-- Favicons -->
-    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/knight-logo.svg') }}">
-    <link rel="mask-icon" href="{{ url_for('static', filename='images/knight-logo.svg') }}" color="#2c3e50">
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Jouez gratuitement au Knight's Tour, le célèbre jeu du cavalier d'échecs en ligne. Défiez-vous sur des plateaux de 4x4 à 8x8, comme dans The Devil's Plan sur Netflix. Un puzzle game captivant et addictif !">
-    <meta name="keywords" content="knight tour, knight game, knight board game, tour du cavalier, devil's plan, chess, challenge, knight, chess game, jeu d'échecs, puzzle chess, chess puzzle, jeu en ligne, game, jeu, plan, netflix, korea, corée">
-    <meta name="author" content="Knight's Tour Game">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="fr">
-    <link rel="canonical" href="https://www.carolix.xyz/">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.carolix.xyz/">
-    <meta property="og:title" content="Knight's Tour - Jeu du Cavalier | Comme dans The Devil's Plan">
-    <meta property="og:description" content="Jouez gratuitement au Knight's Tour, le célèbre jeu du cavalier d'échecs en ligne. Un puzzle game captivant comme dans The Devil's Plan sur Netflix !">
-    <meta property="og:image" content="https://www.carolix.xyz/static/images/knight-preview.svg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+{% extends "base.html" %}
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://www.carolix.xyz/">
-    <meta name="twitter:title" content="Knight's Tour - Jeu du Cavalier | Comme dans The Devil's Plan">
-    <meta name="twitter:description" content="Jouez gratuitement au Knight's Tour, le célèbre jeu du cavalier d'échecs en ligne. Un puzzle game captivant comme dans The Devil's Plan sur Netflix !">
-    <meta name="twitter:image" content="https://www.carolix.xyz/static/images/knight-preview.svg">
+{% block title %}Knight's Tour - Jeu du Cavalier en Ligne | Free Chess Knight Game{% endblock %}
 
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Knight's Tour - Jeu du Cavalier",
-      "description": "Jeu du cavalier d'échecs en ligne gratuit",
-      "url": "https://www.carolix.xyz",
-      "applicationCategory": "Game",
-      "genre": "Puzzle game",
-      "browserRequirements": "Requires JavaScript",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "EUR"
-      }
-    }
-    </script>
+{% block meta %}
+<meta name="description" content="Jouez gratuitement au Knight's Tour, le célèbre jeu du cavalier d'échecs en ligne. Défiez-vous sur des plateaux de 4x4 à 8x8, comme dans The Devil's Plan sur Netflix. Un puzzle game captivant et addictif !">
+<meta name="keywords" content="knight tour, knight game, knight board game, tour du cavalier, devil's plan, chess, challenge, knight, chess game, jeu d'échecs, puzzle chess, chess puzzle, jeu en ligne, game, jeu, plan, netflix, korea, corée">
+<meta name="author" content="Knight's Tour Game">
+<meta name="robots" content="index, follow">
+<meta name="language" content="fr">
+<link rel="canonical" href="https://www.carolix.xyz/">
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-5BZCV2FXBQ');
-    </script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
-</head>
-<body>
-    <div class="container">
-        <nav class="main-nav">
-            <a href="/" class="nav-link active">Accueil</a>
-            <a href="/about" class="nav-link">À propos</a>
-            <a href="/faq" class="nav-link">FAQ</a>
-        </nav>
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.carolix.xyz/">
+<meta property="og:title" content="Knight's Tour - Jeu du Cavalier | Comme dans The Devil's Plan">
+<meta property="og:description" content="Jouez gratuitement au Knight's Tour, le célèbre jeu du cavalier d'échecs en ligne. Un puzzle game captivant comme dans The Devil's Plan sur Netflix !">
+<meta property="og:image" content="https://www.carolix.xyz/static/images/knight-preview.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h1>Knight's Tour - Le Jeu du Cavalier</h1>
-            <button id="theme-toggle" title="Changer de thème" style="padding: 0.5rem 1rem;">🌙/☀️</button>
-        </div>
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://www.carolix.xyz/">
+<meta name="twitter:title" content="Knight's Tour - Jeu du Cavalier | Comme dans The Devil's Plan">
+<meta name="twitter:description" content="Jouez gratuitement au Knight's Tour, le célèbre jeu du cavalier d'échecs en ligne. Un puzzle game captivant comme dans The Devil's Plan sur Netflix !">
+<meta name="twitter:image" content="https://www.carolix.xyz/static/images/knight-preview.svg">
 
-        <div id="game-intro" class="section" style="margin-bottom: 2rem;">
-            <h2>Bienvenue dans le Knight's Tour</h2>
-            <p>Découvrez le jeu de réflexion qui a captivé les joueurs d'échecs pendant des siècles, et récemment mis en vedette dans la série Netflix "The Devil's Plan". Testez votre logique et votre stratégie en relevant le défi du cavalier !</p>
-            
-            <div class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
-                <div class="feature-card" style="background: #f8f8f8; padding: 1rem; border-radius: 8px;">
-                    <h3>🎮 Jouez Gratuitement</h3>
-                    <p>Profitez d'une expérience de jeu fluide et gratuite, accessible sur tous vos appareils.</p>
-                </div>
-                <div class="feature-card" style="background: #f8f8f8; padding: 1rem; border-radius: 8px;">
-                    <h3>🏆 Relevez le Défi</h3>
-                    <p>Comme dans "The Devil's Plan", testez votre intelligence avec ce puzzle classique.</p>
-                </div>
-            </div>
-        </div>
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Knight's Tour - Jeu du Cavalier",
+  "description": "Jeu du cavalier d'échecs en ligne gratuit",
+  "url": "https://www.carolix.xyz",
+  "applicationCategory": "Game",
+  "genre": "Puzzle game",
+  "browserRequirements": "Requires JavaScript",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  }
+}
+</script>
+{% endblock %}
 
-        <div id="rules" style="margin-bottom: 1.5rem; background: #f8f8f8; border-radius: 8px; padding: 1rem; border: 1px solid #ddd;">
-            <h2>Règles du Knight's Tour</h2>
-            <p>Le but est de déplacer le cavalier sur toutes les cases de l'échiquier sans jamais passer deux fois sur la même case.</p>
-            <ul style="list-style-type: disc; margin-left: 1.5rem; margin-top: 0.5rem;">
-                <li>Le cavalier se déplace en "L" : 2 cases dans une direction, puis 1 case perpendiculairement</li>
-                <li>Chaque case ne peut être visitée qu'une seule fois</li>
-                <li>Le défi est complet quand toutes les cases ont été visitées</li>
-                <li>Plusieurs niveaux de difficulté disponibles (4x4 à 8x8)</li>
-            </ul>
-            <a href="https://fr.wikipedia.org/wiki/Tour_du_cavalier" target="_blank" rel="noopener" style="display:inline-block;margin-top:0.5rem;">En savoir plus sur le Knight's Tour (Wikipedia)</a>
-        </div>
-
-        <div id="game-setup" class="section">
-            <h2>Commencez à Jouer</h2>
-            <div style="margin-bottom: 1rem;">
-                <label for="board-size">Choisissez la taille de l'échiquier :</label>
-                <select id="board-size">
-                    {% for n in range(4, 9) %}
-                        <option value="{{ n }}">{{ n }} x {{ n }} {% if n == 8 %}(Classique){% endif %}</option>
-                    {% endfor %}
-                </select>
-                <button id="create-game" style="margin-left: 1rem;">Nouvelle partie</button>
-            </div>
-            <p style="font-style: italic;">Conseil : Commencez par un plateau 4x4 pour vous familiariser avec les règles !</p>
-        </div>
-
-        <div id="game-board" style="display: none;">
-            <div class="board" id="board-container">
-                {% for i in range(8) %}
-                    {% for j in range(8) %}
-                        <div class="cell" data-row="{{ i }}" data-col="{{ j }}"></div>
-                    {% endfor %}
-                {% endfor %}
-            </div>
-            <button id="undo-move" style="margin: 1rem auto; display: block;">Annuler</button>
-            <div id="game-info">
-                <p>Statut: <span id="game-status">En attente...</span></p>
-                <p>Chronomètre: <span id="timer">00:00</span></p>
-            </div>
-        </div>
-
-        <footer style="margin-top: 2rem; text-align: center; padding: 1rem; border-top: 1px solid #ddd;">
-            <nav style="margin-bottom: 1rem;">
-                <a href="/about" style="color: #2c3e50; text-decoration: none; font-weight: 500; margin: 0 1rem;">À propos</a>
-                <a href="/faq" style="color: #2c3e50; text-decoration: none; font-weight: 500; margin: 0 1rem;">FAQ</a>
-            </nav>
-            <p style="color: #666; font-size: 0.9rem;">© 2024 Knight's Tour - Le jeu du cavalier en ligne gratuit</p>
-        </footer>
+{% block content %}
+<div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h1>Knight's Tour - Le Jeu du Cavalier</h1>
+        <button id="theme-toggle" title="Changer de thème" style="padding: 0.5rem 1rem;">🌙/☀️</button>
     </div>
 
-    <script src="{{ url_for('static', filename='game.js') }}"></script>
-</body>
-</html> 
+    <div id="game-intro" class="section" style="margin-bottom: 2rem;">
+        <h2>Bienvenue dans le Knight's Tour</h2>
+        <p>Découvrez le jeu de réflexion qui a captivé les joueurs d'échecs pendant des siècles, et récemment mis en vedette dans la série Netflix "The Devil's Plan". Testez votre logique et votre stratégie en relevant le défi du cavalier !</p>
+        
+        <div class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+            <div class="feature-card" style="background: #f8f8f8; padding: 1rem; border-radius: 8px;">
+                <h3>🎮 Jouez Gratuitement</h3>
+                <p>Profitez d'une expérience de jeu fluide et gratuite, accessible sur tous vos appareils.</p>
+            </div>
+            <div class="feature-card" style="background: #f8f8f8; padding: 1rem; border-radius: 8px;">
+                <h3>🏆 Relevez le Défi</h3>
+                <p>Comme dans "The Devil's Plan", testez votre intelligence avec ce puzzle classique.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="rules" style="margin-bottom: 1.5rem; background: #f8f8f8; border-radius: 8px; padding: 1rem; border: 1px solid #ddd;">
+        <h2>Règles du Knight's Tour</h2>
+        <p>Le but est de déplacer le cavalier sur toutes les cases de l'échiquier sans jamais passer deux fois sur la même case.</p>
+        <ul style="list-style-type: disc; margin-left: 1.5rem; margin-top: 0.5rem;">
+            <li>Le cavalier se déplace en "L" : 2 cases dans une direction, puis 1 case perpendiculairement</li>
+            <li>Chaque case ne peut être visitée qu'une seule fois</li>
+            <li>Le défi est complet quand toutes les cases ont été visitées</li>
+            <li>Plusieurs niveaux de difficulté disponibles (4x4 à 8x8)</li>
+        </ul>
+        <a href="https://fr.wikipedia.org/wiki/Tour_du_cavalier" target="_blank" rel="noopener" style="display:inline-block;margin-top:0.5rem;">En savoir plus sur le Knight's Tour (Wikipedia)</a>
+    </div>
+
+    <div id="game-setup" class="section">
+        <h2>Commencez à Jouer</h2>
+        <div style="margin-bottom: 1rem;">
+            <label for="board-size">Choisissez la taille de l'échiquier :</label>
+            <select id="board-size">
+                {% for n in range(4, 9) %}
+                    <option value="{{ n }}">{{ n }} x {{ n }} {% if n == 8 %}(Classique){% endif %}</option>
+                {% endfor %}
+            </select>
+            <button id="create-game" style="margin-left: 1rem;">Nouvelle partie</button>
+        </div>
+        <p style="font-style: italic;">Conseil : Commencez par un plateau 4x4 pour vous familiariser avec les règles !</p>
+    </div>
+
+    <div id="game-board" style="display: none;">
+        <div class="board" id="board-container">
+            {% for i in range(8) %}
+                {% for j in range(8) %}
+                    <div class="cell" data-row="{{ i }}" data-col="{{ j }}"></div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+        <button id="undo-move" style="margin: 1rem auto; display: block;">Annuler</button>
+        <div id="game-info">
+            <p>Statut: <span id="game-status">En attente...</span></p>
+            <p>Chronomètre: <span id="timer">00:00</span></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='game.js') }}"></script>
+{% endblock %} 

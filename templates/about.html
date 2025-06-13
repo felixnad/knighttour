@@ -1,71 +1,80 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>À propos du Knight's Tour | Histoire et Règles du Jeu du Cavalier</title>
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Découvrez l'histoire fascinante du Knight's Tour, un puzzle mathématique et jeu d'échecs millénaire. Apprenez les règles, l'histoire et les stratégies de ce jeu captivant.">
-    <meta name="keywords" content="knight tour histoire, knight game rules, knight board game history, tour du cavalier histoire, devil's plan, chess history, knight puzzle">
-    <meta name="author" content="Knight's Tour Game">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.carolix.xyz/about">
-    <meta property="og:title" content="À propos du Knight's Tour | Histoire et Règles">
-    <meta property="og:description" content="Découvrez l'histoire fascinante du Knight's Tour, un puzzle mathématique et jeu d'échecs millénaire.">
-    <meta property="og:image" content="https://www.carolix.xyz/static/images/knight-tour-preview.jpg">
+{% extends "base.html" %}
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <div class="container">
-        <nav class="main-nav">
-            <a href="/" class="nav-link">Accueil</a>
-            <a href="/about" class="nav-link active">À propos</a>
-        </nav>
+{% block title %}À propos - Knight's Tour | Histoire et Origine du Jeu du Cavalier{% endblock %}
 
-        <main class="about-content">
-            <h1>À propos du Knight's Tour</h1>
-            
-            <section class="about-section">
-                <h2>L'Histoire du Knight's Tour</h2>
-                <p>Le Knight's Tour (Tour du Cavalier) est l'un des plus anciens puzzles mathématiques liés aux échecs. Son histoire remonte au 9ème siècle, où il était déjà mentionné dans des textes arabes. Le problème a fasciné les mathématiciens et les joueurs d'échecs pendant des siècles.</p>
-                <p>Le concept est simple mais profond : un cavalier doit visiter chaque case d'un échiquier exactement une fois, en suivant les mouvements légaux du cavalier aux échecs. Ce puzzle a inspiré de nombreuses œuvres littéraires et a même fait son apparition dans des séries populaires comme "The Devil's Plan" sur Netflix.</p>
-            </section>
+{% block meta %}
+<meta name="description" content="Découvrez l'histoire fascinante du Knight's Tour, un puzzle mathématique vieux de plusieurs siècles. De son origine aux échecs à son apparition dans The Devil's Plan.">
+<meta name="keywords" content="histoire knight tour, origine tour cavalier, euler knight tour, devil's plan origine">
+<meta name="robots" content="index, follow">
+<meta name="language" content="fr">
+<link rel="canonical" href="https://www.carolix.xyz/about">
 
-            <section class="about-section">
-                <h2>Les Règles du Jeu</h2>
-                <p>Le Knight's Tour suit les règles de mouvement du cavalier aux échecs :</p>
-                <ul>
-                    <li>Le cavalier se déplace en forme de "L" : deux cases dans une direction, puis une case perpendiculairement</li>
-                    <li>Chaque case ne peut être visitée qu'une seule fois</li>
-                    <li>Le but est de visiter toutes les cases de l'échiquier</li>
-                    <li>Le jeu se termine soit par une victoire (toutes les cases visitées), soit par un échec (plus de mouvements possibles)</li>
-                </ul>
-            </section>
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.carolix.xyz/about">
+<meta property="og:title" content="À propos - Knight's Tour | Histoire et Origine">
+<meta property="og:description" content="Découvrez l'histoire fascinante du Knight's Tour, des échecs médiévaux à The Devil's Plan.">
+<meta property="og:image" content="https://www.carolix.xyz/static/images/knight-preview.svg">
 
-            <section class="about-section">
-                <h2>L'Importance Mathématique</h2>
-                <p>Le Knight's Tour est plus qu'un simple jeu - c'est un problème mathématique fascinant qui a contribué au développement de la théorie des graphes et de l'algorithmique. Les mathématiciens ont calculé qu'il existe des millions de solutions possibles sur un échiquier standard de 8x8 cases.</p>
-            </section>
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://www.carolix.xyz/about">
+<meta name="twitter:title" content="À propos - Knight's Tour | Histoire et Origine">
+<meta name="twitter:description" content="Découvrez l'histoire fascinante du Knight's Tour, des échecs médiévaux à The Devil's Plan.">
+<meta name="twitter:image" content="https://www.carolix.xyz/static/images/knight-preview.svg">
+{% endblock %}
 
-            <section class="about-section">
-                <h2>Notre Version en Ligne</h2>
-                <p>Notre version en ligne du Knight's Tour offre :</p>
-                <ul>
-                    <li>Des échiquiers de différentes tailles (4x4 à 8x8)</li>
-                    <li>Une interface intuitive et responsive</li>
-                    <li>La possibilité d'annuler les coups</li>
-                    <li>Un chronomètre pour suivre votre progression</li>
-                </ul>
-            </section>
+{% block content %}
+<div class="container">
+    <div class="about-container">
+        <h1>À propos du Knight's Tour</h1>
 
-            <div class="cta-section">
-                <a href="/" class="cta-button">Jouer Maintenant</a>
-            </div>
-        </main>
+        <section id="history" class="about-section">
+            <h2>Histoire et Origine</h2>
+            <p>Le problème du Knight's Tour (Tour du Cavalier) est l'un des plus anciens casse-têtes mathématiques connus. Ses origines remontent au 9ème siècle en Inde, où il était étroitement lié au jeu d'échecs.</p>
+            <p>Au fil des siècles, de nombreux mathématiciens célèbres se sont penchés sur ce problème fascinant :</p>
+            <ul>
+                <li>Leonhard Euler (1759) : Premier à étudier systématiquement le problème</li>
+                <li>H.C. von Warnsdorff (1823) : Développement d'une heuristique efficace</li>
+                <li>Nombreux mathématiciens modernes : Exploration des variantes et solutions</li>
+            </ul>
+        </section>
+
+        <section id="modern-popularity" class="about-section">
+            <h2>Popularité Moderne</h2>
+            <p>Le Knight's Tour a connu un regain de popularité grâce à son apparition dans la série Netflix "The Devil's Plan" (2023). Dans cette émission de téléréalité coréenne, les participants doivent résoudre ce puzzle comme l'un des défis intellectuels.</p>
+            <p>Cette exposition médiatique a permis à une nouvelle génération de découvrir ce casse-tête mathématique classique, suscitant un intérêt renouvelé pour sa résolution.</p>
+        </section>
+
+        <section id="mathematical-significance" class="about-section">
+            <h2>Importance Mathématique</h2>
+            <p>Le Knight's Tour est bien plus qu'un simple jeu :</p>
+            <ul>
+                <li>Il illustre des concepts de théorie des graphes</li>
+                <li>Il aide à développer la pensée logique et spatiale</li>
+                <li>Il a des applications en intelligence artificielle et en algorithmique</li>
+            </ul>
+        </section>
+
+        <section id="cookies" class="about-section">
+            <h2>Politique de Cookies</h2>
+            <p>Notre site utilise des cookies pour améliorer votre expérience de navigation et proposer des publicités pertinentes. Les cookies nous aident à :</p>
+            <ul>
+                <li>Analyser le trafic du site (via Google Analytics)</li>
+                <li>Afficher des publicités personnalisées (via Google AdSense)</li>
+                <li>Mémoriser vos préférences de jeu</li>
+            </ul>
+            <p>En utilisant notre site, vous acceptez l'utilisation de ces cookies. Vous pouvez les désactiver dans les paramètres de votre navigateur, mais cela pourrait affecter certaines fonctionnalités du site.</p>
+        </section>
+
+        <section id="contact" class="about-section">
+            <h2>Contact</h2>
+            <p>Pour toute question ou suggestion concernant le Knight's Tour, n'hésitez pas à nous contacter :</p>
+            <ul>
+                <li>Email : contact@carolix.xyz</li>
+                <li>Twitter : @KnightTourGame</li>
+            </ul>
+        </section>
     </div>
-</body>
-</html> 
+</div>
+{% endblock %} 
