@@ -3,7 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knight's Tour - Jeu en ligne</title>
+    <title>Knight's Tour - Jeu du Cavalier en Ligne | Free Chess Knight Game </title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Jouez au Knight's Tour (Tour du Cavalier) en ligne gratuitement. Un jeu d'échecs captivant où vous devez déplacer le cavalier sur toutes les cases sans jamais passer deux fois sur la même case.">
+    <meta name="keywords" content="knight tour, knight game, knight board game, tour du cavalier, devil's plan, chess, challenge, knight, knght, chess game
+    jeu d'échecs, puzzle chess, chess puzzle, jeu en ligne, game, jeu, plan, netflix, korea, corée">
+    <meta name="author" content="Knight's Tour Game">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.carolix.xyz/">
+    <meta property="og:title" content="Knight's Tour - Jeu du Cavalier en Ligne">
+    <meta property="og:description" content="Jouez au Knight's Tour (Tour du Cavalier) en ligne gratuitement. Un jeu d'échecs captivant où vous devez déplacer le cavalier sur toutes les cases sans jamais passer deux fois sur la même case.">
+    <meta property="og:image" content="https://www.carolix.xyz/static/images/knight-tour-preview.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.carolix.xyz/">
+    <meta property="twitter:title" content="Knight's Tour - Jeu du Cavalier en Ligne">
+    <meta property="twitter:description" content="Jouez au Knight's Tour (Tour du Cavalier) en ligne gratuitement. Un jeu d'échecs captivant où vous devez déplacer le cavalier sur toutes les cases sans jamais passer deux fois sur la même case.">
+    <meta property="twitter:image" content="https://www.carolix.xyz/static/images/knight-tour-preview.jpg">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-5BZCV2FXBQ');
+    </script>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
 </head>
@@ -42,6 +71,9 @@
                 <p>Chronomètre: <span id="timer">00:00</span></p>
             </div>
         </div>
+        <footer style="margin-top: 2rem; text-align: center; padding: 1rem; border-top: 1px solid #ddd;">
+            <a href="/about" style="color: #2c3e50; text-decoration: none; font-weight: 500;">À propos du Knight's Tour</a>
+        </footer>
     </div>
 
     <script src="{{ url_for('static', filename='game.js') }}"></script>

@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 from flask_socketio import SocketIO, emit, join_room
 import logging
+import os
 
 # Configuration du logging
 logging.basicConfig(level=logging.DEBUG)
@@ -16,6 +17,18 @@ games = {}
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/robots.txt')
+def robots():
+    return send_from_directory(app.static_folder, 'robots.txt')
+
+@app.route('/sitemap.xml')
+def sitemap():
+    return send_from_directory('templates', 'sitemap.xml', mimetype='application/xml')
 
 @socketio.on('connect')
 def handle_connect():
@@ -116,7 +129,6 @@ def is_valid_move(board, row, col):
     return True
 
 if __name__ == '__main__':
-    import os
     import eventlet
     import eventlet.wsgi
     port = int(os.environ.get('PORT', 5000))
