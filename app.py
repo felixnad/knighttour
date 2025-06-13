@@ -22,6 +22,10 @@ def index():
 def about():
     return render_template('about.html')
 
+@app.route('/faq')
+def faq():
+    return render_template('faq.html')
+
 @app.route('/robots.txt')
 def robots():
     return send_from_directory(app.static_folder, 'robots.txt')

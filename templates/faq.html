@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Knight's Tour | Questions Fréquentes sur le Jeu du Cavalier</title>
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/knight-logo.svg') }}">
+    <link rel="mask-icon" href="{{ url_for('static', filename='images/knight-logo.svg') }}" color="#2c3e50">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Trouvez les réponses à toutes vos questions sur le Knight's Tour. Découvrez comment jouer, les règles du jeu, et les astuces pour réussir le défi du Devil's Plan.">
+    <meta name="keywords" content="knight tour faq, devil's plan règles, comment jouer knight tour, astuces knight tour, tour du cavalier aide">
+    <meta name="author" content="Knight's Tour Game">
+    <link rel="canonical" href="https://www.carolix.xyz/faq">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <nav class="main-nav">
+            <a href="/" class="nav-link">Accueil</a>
+            <a href="/about" class="nav-link">À propos</a>
+            <a href="/faq" class="nav-link active">FAQ</a>
+        </nav>
+
+        <main class="faq-content">
+            <h1>Questions Fréquentes</h1>
+            
+            <section class="faq-section">
+                <h2>À propos du Jeu</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3>Qu'est-ce que le Knight's Tour ?</h3>
+                        <p>Le Knight's Tour (Tour du Cavalier) est un puzzle mathématique classique où un cavalier d'échecs doit visiter chaque case d'un échiquier exactement une fois. Ce jeu a été popularisé récemment par l'émission Netflix "The Devil's Plan".</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Est-ce le même jeu que dans "The Devil's Plan" ?</h3>
+                        <p>Oui ! Notre version propose exactement le même défi que celui vu dans la série Netflix "The Devil's Plan". Vous pouvez même commencer par des grilles plus petites pour vous entraîner.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq-section">
+                <h2>Règles et Gameplay</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3>Comment se déplace le cavalier ?</h3>
+                        <p>Le cavalier se déplace en "L" : deux cases dans une direction (horizontale ou verticale), puis une case perpendiculairement. C'est exactement le même mouvement que le cavalier aux échecs.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Comment gagner une partie ?</h3>
+                        <p>Pour gagner, vous devez visiter chaque case de l'échiquier exactement une fois. Si vous ne pouvez plus faire de mouvement valide avant d'avoir visité toutes les cases, la partie est perdue.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Quelle taille d'échiquier choisir ?</h3>
+                        <p>Pour les débutants, nous recommandons de commencer avec un échiquier 4x4 ou 5x5. Une fois que vous maîtrisez ces tailles, passez au 6x6, puis au classique 8x8 comme dans "The Devil's Plan".</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq-section">
+                <h2>Fonctionnalités</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3>Puis-je annuler un coup ?</h3>
+                        <p>Oui, vous pouvez annuler votre dernier coup à tout moment en utilisant le bouton "Annuler" sous l'échiquier.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Le jeu fonctionne-t-il sur mobile ?</h3>
+                        <p>Oui, notre jeu est entièrement responsive et s'adapte à tous les écrans. Vous pouvez jouer sur ordinateur, tablette ou smartphone.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Comment voir les mouvements possibles ?</h3>
+                        <p>Les cases accessibles par votre cavalier sont automatiquement surlignées à chaque tour, vous permettant de visualiser facilement vos options.</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="cta-section">
+                <a href="/" class="cta-button">Jouer Maintenant</a>
+            </div>
+        </main>
+
+        <footer style="margin-top: 2rem; text-align: center; padding: 1rem; border-top: 1px solid #ddd;">
+            <nav style="margin-bottom: 1rem;">
+                <a href="/" style="color: #2c3e50; text-decoration: none; font-weight: 500; margin: 0 1rem;">Accueil</a>
+                <a href="/about" style="color: #2c3e50; text-decoration: none; font-weight: 500; margin: 0 1rem;">À propos</a>
+            </nav>
+            <p style="color: #666; font-size: 0.9rem;">© 2024 Knight's Tour - Le jeu du cavalier en ligne gratuit</p>
+        </footer>
+    </div>
+</body>
+</html> 
